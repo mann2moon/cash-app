@@ -1,0 +1,25 @@
+.phone-number > .PhoneInputInput {
+  border: 1px solid #595959;
+  border-radius:  4px;
+  background-color: #1e1e1e;
+  height: 40px !important;
+  color: white;
+}
+
+.PhoneInputInput:focus-visible {
+  outline: none;
+  border-color: #1e5481;
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 14%), 0px 2px 1px rgb(0 0 0 / 12%), 0px 1px 3px rgb(0 0 0 / 20%);
+}
+
+.PhoneInputInput:hover {
+  border-color: #1e5481;
+}
+
+.phone-number > .PhoneInputCountry {
+  border: 1px solid #595959;
+  border-radius:  4px;
+  background-color: #1e1e1e;
+  height: 40px !important;
+  padding: 5px;
+}
