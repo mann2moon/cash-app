@@ -143,7 +143,7 @@ const DashboardAnalytics = () => {
                     <IconButton
                       size="small"
                       sx={{
-                        border: `1px solid ${theme.palette.grey[400]}`,
+                        border: `1px solid ${theme.palette.grey[800]}`,
                         '&:hover': { backgroundColor: 'transparent' }
                       }}
                     >

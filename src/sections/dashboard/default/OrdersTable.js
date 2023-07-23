@@ -9,23 +9,18 @@ import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHea
 import NumberFormat from 'react-number-format';
 
 // project import
-import Dot from 'components/@extended/Dot';
 
-function createData(trackingNO, name, fat, carbs, protein) {
-  return { trackingNO, name, fat, carbs, protein };
+function createData(trackingNO, name, carbs, protein) {
+  return { trackingNO, name, carbs, protein };
 }
 
 const rows = [
-  createData(84564564, 'Camera Lens', 40, 2, 40570),
-  createData(98764564, 'Laptop', 300, 0, 180139),
-  createData(98756325, 'Mobile', 355, 1, 90989),
-  createData(98652366, 'Handset', 50, 1, 10239),
-  createData(13286564, 'Computer Accessories', 100, 1, 83348),
-  createData(86739658, 'TV', 99, 0, 410780),
-  createData(13256498, 'Keyboard', 125, 2, 70999),
-  createData(98753263, 'Mouse', 89, 2, 10570),
-  createData(98753275, 'Desktop', 185, 1, 98063),
-  createData(98753291, 'Chair', 100, 0, 14001)
+  createData('Buy', 'Using - Bank *******5264', 1, '-0.125 USD'),
+  createData('Sold', 'Using - Card *******8475', 0, '-0.125 USD'),
+  createData('Buy', 'Using - Card *******8475', 1, '-0.125 USD'),
+  createData('Buy', 'Using - Card *******8475', 1, '-0.125 USD'),
+  createData('Buy', 'Using - Bank *******5264', 1, '-0.125 USD'),
+  createData('Sold', 'Using - Bank *******5264', 0, '-0.125 USD')
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -70,16 +65,9 @@ const headCells = [
     label: 'Product Name'
   },
   {
-    id: 'fat',
-    align: 'right',
-    disablePadding: false,
-    label: 'Total Order'
-  },
-  {
     id: 'carbs',
     align: 'left',
     disablePadding: false,
-
     label: 'Status'
   },
   {
@@ -121,29 +109,23 @@ OrderTableHead.propTypes = {
 const OrderStatus = ({ status }) => {
   let color;
   let title;
-
   switch (status) {
     case 0:
-      color = 'warning';
-      title = 'Pending';
+      color = '#f45f5c';
+      title = '-0.000242 BTC	';
       break;
     case 1:
-      color = 'success';
-      title = 'Approved';
-      break;
-    case 2:
-      color = 'error';
-      title = 'Rejected';
+      color = '#34c38f';
+      title = '-0.000242 BTC';
       break;
     default:
       color = 'primary';
-      title = 'None';
+      title = 'none';
   }
 
   return (
     <Stack direction="row" spacing={1} alignItems="center">
-      <Dot color={color} />
-      <Typography>{title}</Typography>
+      <Typography sx={{ color: color }}>{title}</Typography>
     </Stack>
   );
 };
@@ -181,19 +163,13 @@ export default function OrderTable() {
             }
           }}
         >
-          <OrderTableHead order={order} orderBy={orderBy} />
+          {/* <OrderTableHead order={order} orderBy={orderBy} /> */}
           <TableBody>
             {stableSort(rows, getComparator(order, orderBy)).map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`;
 
               return (
-                <TableRow
-                  hover
-                  role="checkbox"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  tabIndex={-1}
-                  key={row.trackingNO}
-                >
+                <TableRow hover role="checkbox" sx={{ '&:last-child td, &:last-child th': { border: 0 } }} tabIndex={-1} key={index}>
                   <TableCell component="th" id={labelId} scope="row" align="left">
                     <Link color="secondary" component={RouterLink} to="">
                       {row.trackingNO}

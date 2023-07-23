@@ -62,7 +62,7 @@ const areaChartOptions = {
 
 // ==============================|| REPORT AREA CHART ||============================== //
 
-const ReportAreaChart = () => {
+const ReportAreaChart = ({ height }) => {
   const theme = useTheme();
   const { mode } = useConfig();
 
@@ -103,7 +103,7 @@ const ReportAreaChart = () => {
     }
   ]);
 
-  return <ReactApexChart options={options} series={series} type="line" height={340} />;
+  return <ReactApexChart options={options} series={series} type="line" height={height} />;
 };
 
 export default ReportAreaChart;

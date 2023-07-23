@@ -1,32 +1,32 @@
 import { useState } from 'react';
-
-// material-ui
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Button, Grid, Stack, Typography } from '@mui/material';
 
-// third-party
 import OtpInput from 'react-otp-input-rc-17';
 
-// project import
 import AnimateButton from 'components/@extended/AnimateButton';
-import useAuth from 'hooks/useAuth';
+// import useAuth from 'hooks/useAuth';
 
 // ============================|| STATIC - CODE VERIFICATION ||============================ //
 
 const AuthCodeVerification = () => {
   const theme = useTheme();
-  const [otp, setOtp] = useState();
-  let values = {
-    verifyCode: '',
-    email: 'info@codedthemes.com',
-    phoneNumber: '',
-    password: '123456'
-  };
-  const { firebaseEmailPasswordSignIn } = useAuth();
+  const navigate = useNavigate();
+
+  const [otp, setOtp] = useState('4563');
+  // let values = {
+  //   verifyCode: otp,
+  //   email: 'litecoin@gmail.com',
+  //   phoneNumber: '+1 202-555-0115',
+  //   password: '123456'
+  // };
+  // const { firebaseEmailPasswordSignIn } = useAuth();
   const borderColor = theme.palette.mode === 'dark' ? theme.palette.grey[200] : theme.palette.grey[300];
 
   const handleSubmit = async () => {
-    await firebaseEmailPasswordSignIn(values.email, values.password, values.phoneNumber, values.verifyCode);
+    // await firebaseEmailPasswordSignIn(values.email, values.password, values.phoneNumber, values.verifyCode);
+    navigate('/dashboard');
   };
   return (
     <Grid container spacing={3}>
