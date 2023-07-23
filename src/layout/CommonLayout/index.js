@@ -15,7 +15,6 @@ import { styled } from '@mui/material/styles';
 import LinearProgress from '@mui/material/LinearProgress';
 
 const Header = lazy(() => import('./Header'));
-const FooterBlock = lazy(() => import('./FooterBlock'));
 
 // ==============================|| Loader ||============================== //
 
@@ -52,9 +51,7 @@ const CommonLayout = ({ layout = 'blank' }) => {
     <>
       {(layout === 'landing' || layout === 'simple') && (
         <Suspense fallback={<Loader />}>
-          <Header layout={layout} />
           <Outlet />
-          <FooterBlock isFull={layout === 'landing'} />
         </Suspense>
       )}
       {layout === 'component' && (

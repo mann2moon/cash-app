@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -10,7 +11,7 @@ import Avatar from 'components/@extended/Avatar';
 import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 import IconButton from 'components/@extended/IconButton';
-import useAuth from 'hooks/useAuth';
+// import useAuth from 'hooks/useAuth';
 import ProfileTab from './ProfileTab';
 import SettingTab from './SettingTab';
 
@@ -45,10 +46,13 @@ function a11yProps(index) {
 const Profile = () => {
   const theme = useTheme();
 
-  const { logout, user } = useAuth();
+  const navigate = useNavigate();
+  // const { logout, user } = useAuth();
+
   const handleLogout = async () => {
     try {
-      await logout();
+      // await logout();
+      navigate('/login');
     } catch (err) {
       console.error(err);
     }
@@ -96,7 +100,7 @@ const Profile = () => {
       >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
           <Avatar alt="profile user" src={avatar1} size="xs" />
-          <Typography variant="subtitle1">{user?.name}</Typography>
+          <Typography variant="subtitle1">Tom</Typography>
         </Stack>
       </ButtonBase>
       <Popper
@@ -139,10 +143,10 @@ const Profile = () => {
                           <Stack direction="row" spacing={1.25} alignItems="center">
                             <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
                             <Stack>
-                              <Typography variant="h6">{user?.name}</Typography>
-                              <Typography variant="body2" color="textSecondary">
+                              <Typography variant="h6">Tom</Typography>
+                              {/* <Typography variant="body2" color="textSecondary">
                                 UI/UX Designer
-                              </Typography>
+                              </Typography> */}
                             </Stack>
                           </Stack>
                         </Grid>

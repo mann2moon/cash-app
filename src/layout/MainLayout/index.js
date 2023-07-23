@@ -10,9 +10,9 @@ import { useMediaQuery, Box, Container, Toolbar } from '@mui/material';
 import Drawer from './Drawer';
 import Header from './Header';
 import Footer from './Footer';
-import navigation from 'menu-items';
+// import navigation from 'menu-items';
 import useConfig from 'hooks/useConfig';
-import Breadcrumbs from 'components/@extended/Breadcrumbs';
+// import Breadcrumbs from 'components/@extended/Breadcrumbs';
 import { openDrawer } from 'store/reducers/menu';
 
 // ==============================|| MAIN LAYOUT ||============================== //
@@ -56,17 +56,17 @@ const MainLayout = () => {
         <Toolbar />
         {container && (
           <Container
-            maxWidth="lg"
+            maxWidth="1800PX"
             sx={{ px: { xs: 0, sm: 2 }, position: 'relative', minHeight: 'calc(100vh - 110px)', display: 'flex', flexDirection: 'column' }}
           >
-            <Breadcrumbs navigation={navigation} title titleBottom card={false} divider={false} />
+            {/* <Breadcrumbs navigation={navigation} card={false} divider={false} /> */}
             <Outlet />
             <Footer />
           </Container>
         )}
         {!container && (
           <Box sx={{ position: 'relative', minHeight: 'calc(100vh - 110px)', display: 'flex', flexDirection: 'column' }}>
-            <Breadcrumbs navigation={navigation} title titleBottom card={false} divider={false} />
+            {/* <Breadcrumbs navigation={navigation} title titleBottom card={false} divider={false} /> */}
             <Outlet />
             <Footer />
           </Box>

@@ -19,24 +19,10 @@ const dashboard = {
   children: [
     {
       id: 'dashboard',
-      title: <FormattedMessage id="dashboard" />,
-      type: 'collapse',
+      type: 'item',
+      url: '/dashboard',
       icon: icons.DashboardOutlined,
-      children: [
-        {
-          id: 'default',
-          title: <FormattedMessage id="default" />,
-          type: 'item',
-          url: '/dashboard/default',
-          breadcrumbs: false
-        },
-        {
-          id: 'analytics',
-          title: <FormattedMessage id="analytics" />,
-          type: 'item',
-          url: '/dashboard/analytics'
-        }
-      ]
+      title: <FormattedMessage id="dashboard" />
     },
     {
       id: 'components',
