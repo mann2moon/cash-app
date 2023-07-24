@@ -59,7 +59,7 @@ const Customization = () => {
 
   return (
     <>
-      <MaterialUISwitch sx={{ m: 1 }} onChange={handleModeChange} value={mode} defaultChecked />
+      <MaterialUISwitch sx={{ m: 1 }} onChange={handleModeChange} checked={mode === 'dark'} />{' '}
     </>
   );
 };
