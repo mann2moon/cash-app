@@ -124,7 +124,6 @@ const DashboardDefault = () => {
                   lg: 'row',
                   xl: 'row'
                 }}
-                // justifyContent="space-between"
                 spacing={2}
               >
                 <Stack direction="column" spacing={1} sx={{ width: '100%' }}>

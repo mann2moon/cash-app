@@ -99,21 +99,6 @@ const pages = {
           target: true
         }
       ]
-    },
-    {
-      id: 'contact-us',
-      title: <FormattedMessage id="contact-us" />,
-      type: 'item',
-      url: '/contact-us',
-      icon: icons.PhoneOutlined,
-      target: true
-    },
-    {
-      id: 'pricing',
-      title: <FormattedMessage id="pricing" />,
-      type: 'item',
-      url: '/pricing',
-      icon: icons.DollarOutlined
     }
   ]
 };
