@@ -19,6 +19,7 @@ import countries from 'data/countries';
 import MainCard from 'components/MainCard';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import useConfig from 'hooks/useConfig';
 
 // styles & constant
 const ITEM_HEIGHT = 48;
@@ -49,6 +50,9 @@ const TabPersonal = () => {
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() - 18);
 
+  const { mode } = useConfig();
+
+  console.log(mode);
   const dispatch = useDispatch();
   const inputRef = useInputRef();
 
@@ -239,7 +243,7 @@ const TabPersonal = () => {
                     <PhoneInput
                       name="phoneNumber"
                       id="phone-number"
-                      className="phone-number"
+                      className={mode === 'dark' ? 'phone-dark-number' : 'phone-light-number'}
                       international
                       defaultCountry="US"
                       onBlur={handleBlur}

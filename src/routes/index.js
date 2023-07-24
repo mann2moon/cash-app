@@ -6,7 +6,7 @@ import CommonLayout from 'layout/CommonLayout';
 // import Loadable from 'components/Loadable';
 import LoginRoutes from './LoginRoutes';
 import MainRoutes from './MainRoutes';
-import { Typography } from '@mui/material';
+import Landing from 'pages/Landing';
 
 // render - landing page
 // const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
@@ -21,7 +21,7 @@ export default function ThemeRoutes() {
       children: [
         {
           path: '/',
-          element: <Typography>Landing...</Typography>
+          element: <Landing />
         }
       ]
     },

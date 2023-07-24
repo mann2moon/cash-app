@@ -35,6 +35,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import useConfig from 'hooks/useConfig';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -45,6 +46,7 @@ const AuthLogin = () => {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
   const [tabValue, setTabValue] = React.useState('1');
+  const { mode } = useConfig();
   const scriptedRef = useScriptRef();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -145,7 +147,7 @@ const AuthLogin = () => {
                       <PhoneInput
                         name="phoneNumber"
                         id="phone-number"
-                        className="phone-number"
+                        className={mode === 'dark' ? 'phone-dark-number' : 'phone-light-number'}
                         international
                         defaultCountry="US"
                         onBlur={handleBlur}

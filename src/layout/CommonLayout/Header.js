@@ -7,27 +7,24 @@ import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import { useTheme } from '@mui/material/styles';
 import {
-  useMediaQuery,
   Box,
   Button,
-  Chip,
   Container,
-  Drawer,
   Link,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Stack,
   Toolbar,
   Typography,
-  useScrollTrigger
+  useScrollTrigger,
+  Drawer,
+  List,
+  ListItemIcon,
+  ListItemButton,
+  ListItemText
 } from '@mui/material';
 
 // project import
-import config from 'config';
+// import config from 'config';
 import IconButton from 'components/@extended/IconButton';
-import AnimateButton from 'components/@extended/AnimateButton';
 import Logo from 'components/logo';
 
 // assets
@@ -58,7 +55,7 @@ function ElevationScroll({ layout, children, window }) {
 
 const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
   const theme = useTheme();
-  const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
+  // const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   const [drawerToggle, setDrawerToggle] = useState(false);
 
   /** Method called on multiple components with different event types */
@@ -72,19 +69,12 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
   return (
     <ElevationScroll layout={layout} {...others}>
       <AppBar sx={{ bgcolor: 'transparent', color: theme.palette.text.primary, boxShadow: 'none' }}>
-        <Container disableGutters={matchDownMd}>
+        <Container>
           <Toolbar sx={{ px: { xs: 1.5, md: 0, lg: 0 }, py: 2 }}>
             <Stack direction="row" sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }} alignItems="center">
               <Typography component="div" sx={{ textAlign: 'left', display: 'inline-block' }}>
                 <Logo reverse to="/" />
               </Typography>
-              <Chip
-                label={process.env.REACT_APP_VERSION}
-                variant="outlined"
-                size="small"
-                color="secondary"
-                sx={{ mt: 0.5, ml: 1, fontSize: '0.725rem', height: 20, '& .MuiChip-label': { px: 0.5 } }}
-              />
             </Stack>
             <Stack
               direction="row"
@@ -94,25 +84,12 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
               }}
               spacing={2}
             >
-              <Link className="header-link" color="white" component={RouterLink} to="/login" target="_blank" underline="none">
-                Dashboard
-              </Link>
-              <Link className="header-link" color="white" href="https://codedthemes.gitbook.io/mantis/" target="_blank" underline="none">
-                Documentation
-              </Link>
-              <Box sx={{ display: 'inline-block' }}>
-                <AnimateButton>
-                  <Button
-                    component={Link}
-                    href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
-                    disableElevation
-                    color="primary"
-                    variant="contained"
-                  >
-                    Purchase Now
-                  </Button>
-                </AnimateButton>
-              </Box>
+              <Button component={Link} href="/login" variant="contained" color="success">
+                Login
+              </Button>
+              <Button component={Link} href="/register" variant="contained" color="primary">
+                Sign Up
+              </Button>
             </Stack>
             <Box
               sx={{
@@ -127,15 +104,8 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
               </Typography>
               <Stack direction="row" spacing={2}>
                 {layout === 'component' && (
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="warning"
-                    component={RouterLink}
-                    to={config.defaultPath}
-                    sx={{ mt: 0.5, height: 28 }}
-                  >
-                    Dashboard
+                  <Button variant="outlined" size="small" color="warning" component={RouterLink} to="/login" sx={{ mt: 0.5, height: 28 }}>
+                    Login
                   </Button>
                 )}
                 {layout !== 'component' && (
@@ -144,10 +114,10 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                     size="small"
                     color="warning"
                     component={RouterLink}
-                    to="/components-overview/buttons"
+                    to="/register"
                     sx={{ mt: 0.5, height: 28 }}
                   >
-                    All Components
+                    Sign Up
                   </Button>
                 )}
 
@@ -185,58 +155,25 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                         <ListItemIcon>
                           <LineOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="Dashboard" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
+                        <ListItemText primary="Login" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
                       </ListItemButton>
                     </Link>
-                    <Link style={{ textDecoration: 'none' }} href="/components-overview/buttons" target="_blank">
+                    <Link style={{ textDecoration: 'none' }} href="/register" target="_blank">
                       <ListItemButton component="span">
                         <ListItemIcon>
                           <LineOutlined />
                         </ListItemIcon>
-                        <ListItemText primary="All Components" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
+                        <ListItemText primary="Sign Up" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
                       </ListItemButton>
                     </Link>
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      href="https://github.com/codedthemes/mantis-free-react-admin-template"
-                      target="_blank"
-                    >
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Free Version" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="https://codedthemes.gitbook.io/mantis/" target="_blank">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Documentation" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link style={{ textDecoration: 'none' }} href="https://codedthemes.support-hub.io/" target="_blank">
-                      <ListItemButton component="span">
-                        <ListItemIcon>
-                          <LineOutlined />
-                        </ListItemIcon>
-                        <ListItemText primary="Support" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
-                      </ListItemButton>
-                    </Link>
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      href="https://mui.com/store/items/mantis-react-admin-dashboard-template/"
-                      target="_blank"
-                    >
-                      <ListItemButton component="span">
+
+                    {/* <ListItemButton component="span">
                         <ListItemIcon>
                           <LineOutlined />
                         </ListItemIcon>
                         <ListItemText primary="Purchase Now" primaryTypographyProps={{ variant: 'h6', color: 'text.primary' }} />
                         <Chip color="primary" label="v1.0" size="small" />
-                      </ListItemButton>
-                    </Link>
+                      </ListItemButton> */}
                   </List>
                 </Box>
               </Drawer>

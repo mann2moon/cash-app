@@ -35,6 +35,7 @@ import { strengthColor, strengthIndicator } from 'utils/password-strength';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import useConfig from 'hooks/useConfig';
 
 // ============================|| FIREBASE - REGISTER ||============================ //
 
@@ -44,6 +45,8 @@ const AuthRegister = () => {
 
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
+
+  const { mode } = useConfig();
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -151,7 +154,7 @@ const AuthRegister = () => {
                       <PhoneInput
                         name="phoneNumber"
                         id="phone-number"
-                        className="phone-number"
+                        className={mode === 'dark' ? 'phone-dark-number' : 'phone-light-number'}
                         international
                         defaultCountry="US"
                         onBlur={handleBlur}

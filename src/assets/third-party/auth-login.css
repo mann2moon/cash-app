@@ -1,4 +1,4 @@
-.phone-number > .PhoneInputInput {
+.phone-dark-number > .PhoneInputInput {
   border: 1px solid #595959;
   border-radius:  4px;
   background-color: #1e1e1e;
@@ -16,10 +16,27 @@
   border-color: #1e5481;
 }
 
-.phone-number > .PhoneInputCountry {
+.phone-dark-number > .PhoneInputCountry {
   border: 1px solid #595959;
   border-radius:  4px;
   background-color: #1e1e1e;
+  height: 40px !important;
+  padding: 5px;
+}
+
+.phone-light-number > .PhoneInputInput {
+  border: 1px solid #d9d9d9;
+  border-radius:  4px;
+  background-color: white;
+  height: 40px !important;
+  color: black;
+}
+
+
+.phone-light-number > .PhoneInputCountry {
+  border: 1px solid #d9d9d9;
+  border-radius:  4px;
+  background-color: white;
   height: 40px !important;
   padding: 5px;
 }
