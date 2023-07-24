@@ -22,7 +22,7 @@ const initialState = {
 const ConfigContext = createContext(initialState);
 
 function ConfigProvider({ children }) {
-  const [config, setConfig] = useLocalStorage('mantis-react-ts-config', initialState);
+  const [config, setConfig] = useLocalStorage('cash-react-ts-config', initialState);
 
   const onChangeContainer = () => {
     setConfig({

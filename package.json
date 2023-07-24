@@ -75,7 +75,7 @@
     "react-redux": "^7.2.6",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "react-slick": "^0.28.1",
     "react-spring": "^9.4.3",
     "react-swipeable-views": "^0.14.0",
@@ -90,14 +90,14 @@
     "simplebar": "^5.3.8",
     "simplebar-react": "^2.4.1",
     "slick-carousel": "^1.8.1",
-    "stylis-plugin-rtl": "^2.1.1",
+    "stylis-plugin-rtl": "^1",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start --openssl-legacy-provider",
-    "build": "react-scripts build --openssl-legacy-provider",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
