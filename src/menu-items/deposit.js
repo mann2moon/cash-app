@@ -4,19 +4,19 @@ import { WalletOutlined } from '@ant-design/icons';
 
 const icons = { WalletOutlined };
 
-const account = {
+const deposit = {
   id: 'group-account',
 
   type: 'group',
   children: [
     {
-      id: 'account',
-      title: <FormattedMessage id="Account" />,
+      id: 'deposit',
+      title: <FormattedMessage id="deposit" />,
       type: 'item',
       icon: icons.WalletOutlined,
-      url: '/account'
+      url: '/deposit'
     }
   ]
 };
 
-export default account;
+export default deposit;

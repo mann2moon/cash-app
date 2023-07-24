@@ -4,7 +4,7 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import CommonLayout from 'layout/CommonLayout';
 import Loadable from 'components/Loadable';
-import Account from 'pages/account';
+
 // import AuthGuard from 'utils/route-guard/AuthGuard';
 
 // render - dashboard
@@ -27,6 +27,9 @@ const AuthCodeVerification = Loadable(lazy(() => import('pages/auth/code-verific
 const MaintenanceError = Loadable(lazy(() => import('pages/maintenance/404')));
 const MaintenanceError500 = Loadable(lazy(() => import('pages/maintenance/500')));
 
+const WithDraw = Loadable(lazy(() => import('pages/account/withdraw')));
+const Deposit = Loadable(lazy(() => import('pages/account/deposit')));
+const History = Loadable(lazy(() => import('pages/account/history')));
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -73,8 +76,16 @@ const MainRoutes = {
           ]
         },
         {
-          path: 'account',
-          element: <Account />
+          path: 'withdraw',
+          element: <WithDraw />
+        },
+        {
+          path: 'deposit',
+          element: <Deposit />
+        },
+        {
+          path: 'history',
+          element: <History />
         }
       ]
     },
