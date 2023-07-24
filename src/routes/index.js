@@ -2,11 +2,11 @@
 import { useRoutes } from 'react-router-dom';
 
 // project import
-// import CommonLayout from 'layout/CommonLayout';
+import CommonLayout from 'layout/CommonLayout';
 // import Loadable from 'components/Loadable';
-import ComponentsRoutes from './ComponentsRoutes';
 import LoginRoutes from './LoginRoutes';
 import MainRoutes from './MainRoutes';
+import { Typography } from '@mui/material';
 
 // render - landing page
 // const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
@@ -14,5 +14,18 @@ import MainRoutes from './MainRoutes';
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
-  return useRoutes([LoginRoutes, ComponentsRoutes, MainRoutes]);
+  return useRoutes([
+    {
+      path: '/',
+      element: <CommonLayout layout="landing" />,
+      children: [
+        {
+          path: '/',
+          element: <Typography>Landing...</Typography>
+        }
+      ]
+    },
+    LoginRoutes,
+    MainRoutes
+  ]);
 }

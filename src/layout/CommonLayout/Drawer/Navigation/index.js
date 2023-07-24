@@ -5,7 +5,6 @@ import { Box, Typography } from '@mui/material';
 
 // project import
 import NavGroup from './NavGroup';
-import menuItem from 'menu-items/components';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
@@ -16,24 +15,22 @@ const Navigation = ({ searchValue }) => {
   if (searchValue === null || searchValue === undefined || searchValue === '') {
     filteredMenuItems = menuItem;
   } else {
-    menuItem.forEach((parentMenu) => {
-      const matchedChildren = [];
-
-      parentMenu.children?.forEach((child) => {
-        if (child.search?.trim().toLowerCase().includes(searchValue)) {
-          // todo: consider other filed then id
-          // if match
-          matchedChildren.push(child); // get the filter menuitem and push it to children
-        }
-      });
-
-      const parent = filteredMenuItems.filter((xx) => xx === parentMenu); // get the parent menu item/header
-      if (parent.length === 0 && matchedChildren.length > 0) {
-        const clonedParent = { ...parentMenu }; // clone children as we dont want entire children but just filtered
-        clonedParent.children = matchedChildren;
-        filteredMenuItems.push(clonedParent);
-      }
-    });
+    // menuItem.forEach((parentMenu) => {
+    //   const matchedChildren = [];
+    //   parentMenu.children?.forEach((child) => {
+    //     if (child.search?.trim().toLowerCase().includes(searchValue)) {
+    //       // todo: consider other filed then id
+    //       // if match
+    //       matchedChildren.push(child); // get the filter menuitem and push it to children
+    //     }
+    //   });
+    //   const parent = filteredMenuItems.filter((xx) => xx === parentMenu); // get the parent menu item/header
+    //   if (parent.length === 0 && matchedChildren.length > 0) {
+    //     const clonedParent = { ...parentMenu }; // clone children as we dont want entire children but just filtered
+    //     clonedParent.children = matchedChildren;
+    //     filteredMenuItems.push(clonedParent);
+    //   }
+    // });
   }
 
   const navGroups = filteredMenuItems.map((item) => {
