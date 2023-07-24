@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 
 // project import
-import GuestGuard from 'utils/route-guard/GuestGuard';
-import CommonLayout from 'layout/CommonLayout';
+// import GuestGuard from 'utils/route-guard/GuestGuard';
+// import CommonLayout from 'layout/CommonLayout';
 import Loadable from 'components/Loadable';
 
 // render - login
@@ -20,11 +20,7 @@ const LoginRoutes = {
   children: [
     {
       path: '/',
-      element: (
-        <GuestGuard>
-          <CommonLayout />
-        </GuestGuard>
-      ),
+      // element: <GuestGuard>{/* <CommonLayout /> */}</GuestGuard>,
       children: [
         {
           path: 'login',
