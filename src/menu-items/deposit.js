@@ -1,19 +1,21 @@
 import { FormattedMessage } from 'react-intl';
 
-import { WalletOutlined } from '@ant-design/icons';
+import { BsBoxArrowInDown } from 'react-icons/bs';
+import { Divider } from '@mui/material';
 
-const icons = { WalletOutlined };
+const icons = { BsBoxArrowInDown };
 
 const deposit = {
-  id: 'group-account',
+  id: 'group-deposit',
 
   type: 'group',
+  title: <Divider />,
   children: [
     {
       id: 'deposit',
       title: <FormattedMessage id="deposit" />,
       type: 'item',
-      icon: icons.WalletOutlined,
+      icon: icons.BsBoxArrowInDown,
       url: '/deposit'
     }
   ]
