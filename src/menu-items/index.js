@@ -8,7 +8,7 @@ import depositWithDrawHistory from './history';
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-  items: [dashboard, applications, withdraw, deposit, depositWithDrawHistory]
+  items: [dashboard, applications, deposit, withdraw, depositWithDrawHistory]
 };
 
 export default menuItems;

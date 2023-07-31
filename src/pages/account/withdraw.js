@@ -1,14 +1,64 @@
 import React, { useState } from 'react';
 
-import { Grid, Typography, Stack, Select, MenuItem, TextField, Button, Card } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  Stack,
+  Select,
+  MenuItem,
+  TextField,
+  Button,
+  IconButton,
+  Card,
+  Dialog,
+  DialogContent,
+  FormControl,
+  OutlinedInput
+} from '@mui/material';
 import AnimateButton from 'components/@extended/AnimateButton';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ClearIcon from '@mui/icons-material/Clear';
+
+import useConfig from 'hooks/useConfig';
+import Search from 'components/Search';
+import { Network } from 'data/network';
+import { WithdrawToken } from 'data/withdrawToken';
+import CopyToClipboard from 'react-copy-to-clipboard';
+import { ContentCopy } from '@mui/icons-material';
 
 const Withdraw = () => {
-  const [withDrawCoin, setWithDrawCoin] = useState('');
-  // const [withDrawNetwork, setWithDrawNetwork] = useState('');
+  const [withDrawCoin, setWithDrawCoin] = useState({
+    name: '',
+    value: '',
+    icon: ''
+  });
+  const [withDrawNetwork, setWithDrawNetwork] = useState('');
+  const { mode } = useConfig();
+  const [token, setToken] = useState([]);
+  const [address, setAddress] = useState('');
 
-  const handleWithDrawCoinChange = (e) => {
-    setWithDrawCoin(e.target.value);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleWithDrawCoinChange = ({ name, value, icon }) => {
+    setWithDrawCoin({ name: name, value: value, icon: icon });
+    handleClose();
+  };
+
+  const handleNetWork = (e) => {
+    setWithDrawNetwork(e.target.value);
+    setWithDrawCoin({ name: '', value: '', icon: '' });
+    setToken(WithdrawToken.filter((obj) => obj.network === e.target.value)[0]?.tokens);
+  };
+
+  const handleAddressChange = (e) => {
+    setAddress(e.target.value);
   };
 
   return (
@@ -20,89 +70,120 @@ const Withdraw = () => {
           <Card sx={{ padding: '20px' }}>
             <Stack direction="column" sx={{ mt: 2 }}>
               <Stack direction="column">
-                <Typography>Select Coin</Typography>
-                <Select
-                  value={withDrawCoin}
-                  onChange={handleWithDrawCoinChange}
-                  displayEmpty
-                  sx={{ width: '100%' }}
-                  inputProps={{ 'aria-label': 'Without label' }}
+                <Typography sx={{ color: mode === 'dark' ? '#FFF' : '#8c8c8c' }}>Select Coin</Typography>
+                <Button
+                  onClick={handleOpen}
+                  sx={{
+                    width: '100%',
+                    justifyContent: 'space-between',
+                    border: mode === 'dark' ? '1px solid #595959' : '1px solid #d9d9d9',
+                    color: mode === 'dark' ? '#FFF' : 'black',
+                    ':hover': mode === 'dark' ? { backgroundColor: '#292929', color: '#FFF' } : { background: '#FFF', color: 'black' }
+                  }}
                 >
-                  <MenuItem value="" sx={{ color: 'text.secondary' }}>
-                    Select
-                  </MenuItem>
-                  <MenuItem value="litecoin">
-                    <Stack direction="row" justifyContent="space-between" sx={{ width: '100%' }}>
-                      <Stack direction="column">
-                        <Typography variant="h6">LTC</Typography>
-                        <Typography variant="h6" color="secondary">
-                          Litecoin
-                        </Typography>
-                      </Stack>
-
-                      <Stack direction="column" style={{ textAlign: 'right' }}>
-                        <Typography variant="h6">10</Typography>
-                        <Typography variant="h6" color="secondary">
-                          $ 89
-                        </Typography>
-                      </Stack>
+                  <Stack direction="row" sx={{ marginY: 'auto' }}>
+                    <img src={withDrawCoin.icon} alt={withDrawCoin.name} />
+                    <Typography variant="h6" sx={{ marginY: 'auto', marginLeft: '5px' }}>
+                      {withDrawCoin.name}
+                    </Typography>
+                  </Stack>
+                  <Stack direction="row" sx={{ marginY: 'auto' }}>
+                    <Typography variant="h6" sx={{ marginY: 'auto' }}>
+                      {withDrawCoin.value}
+                    </Typography>
+                    <ArrowDropDownIcon />
+                  </Stack>
+                </Button>
+                <Dialog open={open} onClose={handleClose} sx={{ width: '100%', mx: 'auto' }}>
+                  <DialogContent sx={{ width: { lg: '600px', md: '400px', sm: '300px', xs: '250px' }, overflowY: 'visible' }}>
+                    <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
+                      <Typography sx={{ color: mode === 'dark' ? '#FFF' : 'black', ml: 2, marginY: 'auto' }} variant="h3">
+                        Select Coin
+                      </Typography>
+                      <IconButton onClick={handleClose} aria-label="close">
+                        <ClearIcon sx={{ marginY: 'auto' }} />
+                      </IconButton>
                     </Stack>
-                  </MenuItem>
-                  <MenuItem value="bitcoin">
-                    <Stack direction="row" justifyContent="space-between" sx={{ width: '100%' }}>
-                      <Stack direction="column">
-                        <Typography variant="h6">BTC</Typography>
-                        <Typography variant="h6" color="secondary">
-                          Bitcoin
-                        </Typography>
-                      </Stack>
 
-                      <Stack direction="column" style={{ textAlign: 'right' }}>
-                        <Typography variant="h6">0.05</Typography>
-                        <Typography variant="h6" color="secondary">
-                          $ 1451.8
-                        </Typography>
-                      </Stack>
-                    </Stack>
-                  </MenuItem>
-                  <MenuItem value="ethereum">
-                    <Stack direction="row" justifyContent="space-between" sx={{ width: '100%' }}>
-                      <Stack direction="column">
-                        <Typography variant="h6">ETH</Typography>
-                        <Typography variant="h6" color="secondary">
-                          Ethereum
-                        </Typography>
-                      </Stack>
+                    <Search style={{ width: '100%', pl: 1, pr: { lg: 3, md: 3, sm: 2, xs: 2 } }} />
 
-                      <Stack direction="column" style={{ textAlign: 'right' }}>
-                        <Typography variant="h6">0.1</Typography>
-                        <Typography variant="h6" color="secondary">
-                          $ 184.1
-                        </Typography>
-                      </Stack>
+                    <Stack direction="column" sx={{ mt: 5 }}>
+                      <Typography variant="h6" color="secondary" sx={{ ml: 2 }}>
+                        Available for Withdrawal
+                      </Typography>
+                      <FormControl sx={{ mt: 2, width: '100%' }}>
+                        {token?.map((item, index) => (
+                          <MenuItem
+                            value={item.id}
+                            key={index}
+                            onClick={() => handleWithDrawCoinChange({ name: item.name, value: item.value, icon: item.icon })}
+                          >
+                            <Stack direction="row" justifyContent="space-between" sx={{ width: '100%' }}>
+                              <Stack direction="row" gap={2}>
+                                <img src={item.icon} alt={item.id} />
+                                <Stack direction="column">
+                                  <Typography variant="h6">{item.name}</Typography>
+                                  <Typography variant="h6" color="secondary">
+                                    {item.label}
+                                  </Typography>
+                                </Stack>
+                              </Stack>
+
+                              <Stack direction="column" style={{ textAlign: 'right' }}>
+                                <Typography variant="h6">{item.tokenValue}</Typography>
+                                <Typography variant="h6" color="secondary">
+                                  {item.value}
+                                </Typography>
+                              </Stack>
+                            </Stack>
+                          </MenuItem>
+                        ))}
+                      </FormControl>
                     </Stack>
-                  </MenuItem>
-                </Select>
+                  </DialogContent>
+                </Dialog>
               </Stack>
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Stack direction="column">
                   <Typography variant="h6" color="secondary">
                     Wallet Address
                   </Typography>
-                  <TextField placeholder="wallet address" id="withdraw-address" />
+                  <OutlinedInput
+                    placeholder="wallet address"
+                    id="withdraw-address"
+                    endAdornment={
+                      <CopyToClipboard text={address}>
+                        <ContentCopy sx={{ fontSize: '20px', ':hover': { cursor: 'pointer' } }} />
+                      </CopyToClipboard>
+                    }
+                    value={address}
+                    onChange={handleAddressChange}
+                    name="address"
+                  />
                 </Stack>
               </Stack>
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Typography variant="h6" color="secondary">
                   Network
                 </Typography>
-                <Select displayEmpty sx={{ width: '100%' }} inputProps={{ 'aria-label': 'Without label' }}>
+                <Select
+                  displayEmpty
+                  sx={{ width: '100%' }}
+                  inputProps={{ 'aria-label': 'Without label' }}
+                  value={withDrawNetwork}
+                  onChange={handleNetWork}
+                >
                   <MenuItem value="" sx={{ color: 'text.secondary' }}>
                     Select
                   </MenuItem>
-                  <MenuItem value="ethereum">Ethereum</MenuItem>
-                  <MenuItem value="polygon">Polygon</MenuItem>
-                  <MenuItem value="bnb chain">BNB Chain</MenuItem>
+                  {Network.map((item, index) => (
+                    <MenuItem key={index} value={item.id}>
+                      <Stack direction="row">
+                        <img src={item.icon} alt={item.id} style={{ marginRight: '2px', width: '20px', height: '20px' }} />
+                        {item.label}
+                      </Stack>
+                    </MenuItem>
+                  ))}
                 </Select>
               </Stack>
               <Stack direction="column" sx={{ mt: 2 }}>

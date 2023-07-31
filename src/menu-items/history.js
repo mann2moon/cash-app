@@ -1,11 +1,10 @@
 import { FormattedMessage } from 'react-intl';
 
-import { WalletOutlined } from '@ant-design/icons';
-
-const icons = { WalletOutlined };
+import { HistoryOutlined } from '@ant-design/icons';
+const icons = { HistoryOutlined };
 
 const depositWithDrawHistory = {
-  id: 'group-account',
+  id: 'group-history',
 
   type: 'group',
   children: [
@@ -13,7 +12,7 @@ const depositWithDrawHistory = {
       id: 'history',
       title: <FormattedMessage id="history" />,
       type: 'item',
-      icon: icons.WalletOutlined,
+      icon: icons.HistoryOutlined,
       url: '/history'
     }
   ]
