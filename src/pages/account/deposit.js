@@ -22,6 +22,7 @@ import useConfig from 'hooks/useConfig';
 import Search from 'components/Search';
 import { Network } from 'data/network';
 import { DepositToken } from 'data/depositToken';
+import { FormattedMessage } from 'react-intl';
 
 const Deposit = () => {
   const [withDrawCoin, setWithDrawCoin] = useState({
@@ -55,14 +56,18 @@ const Deposit = () => {
 
   return (
     <>
-      <Typography variant="h3">Deposit Crypto</Typography>
+      <Typography variant="h3">
+        <FormattedMessage id="deposit-crypto" />
+      </Typography>
       <Grid container sx={{ mt: 5 }}>
         <Grid item lg={4} md={4} sm={12} xs={12}></Grid>
         <Grid item lg={4} md={4} sm={12} xs={12}>
           <Card sx={{ padding: '20px' }}>
             <Stack direction="column" sx={{ mt: 2 }}>
               <Stack direction="column">
-                <Typography sx={{ color: mode === 'dark' ? '#FFF' : '#8c8c8c' }}>Select Coin</Typography>
+                <Typography sx={{ color: mode === 'dark' ? '#FFF' : '#8c8c8c' }}>
+                  <FormattedMessage id="select-coin" />
+                </Typography>
                 <Button
                   onClick={handleOpen}
                   sx={{
@@ -87,7 +92,7 @@ const Deposit = () => {
                   <DialogContent sx={{ width: { lg: '600px', md: '400px', sm: '300px', xs: '250px' }, overflowY: 'visible' }}>
                     <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
                       <Typography sx={{ color: mode === 'dark' ? '#FFF' : 'black', ml: 2, marginY: 'auto' }} variant="h3">
-                        Select Coin
+                        <FormattedMessage id="select-coin" />
                       </Typography>
                       <IconButton onClick={handleClose} aria-label="close">
                         <ClearIcon sx={{ marginY: 'auto' }} />
@@ -98,7 +103,7 @@ const Deposit = () => {
 
                     <Stack direction="column" sx={{ mt: 5 }}>
                       <Typography variant="h6" color="secondary" sx={{ ml: 2 }}>
-                        Available for Withdrawal
+                        <FormattedMessage id="available-for-withdrawal" />
                       </Typography>
                       <FormControl sx={{ mt: 2, width: '100%' }}>
                         {token?.map((item, index) => (
@@ -134,7 +139,7 @@ const Deposit = () => {
               </Stack>
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Typography variant="h6" color="secondary">
-                  Network
+                  <FormattedMessage id="network" />
                 </Typography>
                 <Select
                   displayEmpty
@@ -159,7 +164,7 @@ const Deposit = () => {
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Stack direction="column">
                   <Typography variant="h6" color="secondary">
-                    Amount
+                    <FormattedMessage id="amount" />
                   </Typography>
                   <TextField placeholder="amount" id="amount" />
                 </Stack>
@@ -167,7 +172,7 @@ const Deposit = () => {
               <Stack direction="row" justifyContent="center" sx={{ width: '100%', mt: 2 }}>
                 <AnimateButton>
                   <Button color="primary" variant="contained" sx={{ mt: 2 }} onClick={() => confirm('Are you sure?')}>
-                    Deposit
+                    <FormattedMessage id="deposit" />
                   </Button>
                 </AnimateButton>
               </Stack>

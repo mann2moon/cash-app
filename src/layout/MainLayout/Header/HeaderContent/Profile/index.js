@@ -18,6 +18,7 @@ import SettingTab from './SettingTab';
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -172,7 +173,7 @@ const Profile = () => {
                                 textTransform: 'capitalize'
                               }}
                               icon={<UserOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                              label="Profile"
+                              label={<FormattedMessage id="profile" />}
                               {...a11yProps(0)}
                             />
                             <Tab
@@ -184,7 +185,7 @@ const Profile = () => {
                                 textTransform: 'capitalize'
                               }}
                               icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
-                              label="Setting"
+                              label={<FormattedMessage id="setting" />}
                               {...a11yProps(1)}
                             />
                           </Tabs>

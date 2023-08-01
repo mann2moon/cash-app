@@ -37,6 +37,7 @@ import { DeleteOutlined, EyeOutlined, EyeInvisibleOutlined, PlusOutlined } from 
 import masterCard from 'assets/images/icons/master-card.png';
 import paypal from 'assets/images/icons/paypal.png';
 import visaCard from 'assets/images/icons/visa-card.png';
+import { FormattedMessage } from 'react-intl';
 
 // style & constant
 const buttonStyle = { color: 'text.primary', fontWeight: 600 };
@@ -130,7 +131,7 @@ const TabPayment = () => {
   };
 
   return (
-    <MainCard title="Payment">
+    <MainCard title={<FormattedMessage id="payment" />}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Stack spacing={1.25} direction="row" justifyContent="space-between" alignItems="center">
@@ -160,7 +161,7 @@ const TabPayment = () => {
               onClick={() => setMethod(method !== 'add' ? 'add' : method)}
               sx={{ display: { xs: 'none', sm: 'flex' } }}
             >
-              Add New Card
+              <FormattedMessage id="add-new-card" />
             </Button>
             <Tooltip title="Add New Card">
               <IconButton
@@ -189,9 +190,11 @@ const TabPayment = () => {
             <Grid item xs={12}>
               <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2}>
                 <Button variant="outlined" color="secondary">
-                  Cancel
+                  <FormattedMessage id="cancel" />
                 </Button>
-                <Button variant="contained">Save</Button>
+                <Button variant="contained">
+                  <FormattedMessage id="save" />
+                </Button>
               </Stack>
             </Grid>
           </>
@@ -233,7 +236,9 @@ const TabPayment = () => {
                   <Grid container spacing={3}>
                     <Grid item xs={12}>
                       <Stack spacing={1.25}>
-                        <InputLabel htmlFor="payment-paypal-email">Email Address</InputLabel>
+                        <InputLabel htmlFor="payment-paypal-email">
+                          <FormattedMessage id="email address" />
+                        </InputLabel>
                         <TextField
                           type="email"
                           fullWidth
@@ -254,10 +259,10 @@ const TabPayment = () => {
                     <Grid item xs={12}>
                       <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2}>
                         <Button color="error" onClick={() => setMethod('card')}>
-                          Cancel
+                          <FormattedMessage id="cancel" />
                         </Button>
                         <Button disabled={isSubmitting || Object.keys(errors).length !== 0} type="submit" variant="contained">
-                          Save
+                          <FormattedMessage id="save" />
                         </Button>
                       </Stack>
                     </Grid>

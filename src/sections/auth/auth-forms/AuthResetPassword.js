@@ -30,6 +30,7 @@ import { openSnackbar } from 'store/reducers/snackbar';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 
 // ============================|| STATIC - RESET PASSWORD ||============================ //
 
@@ -114,7 +115,9 @@ const AuthResetPassword = () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="password-reset">Password</InputLabel>
+                  <InputLabel htmlFor="password-reset">
+                    <FormattedMessage id="password" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
@@ -163,7 +166,9 @@ const AuthResetPassword = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="confirm-password-reset">Confirm Password</InputLabel>
+                  <InputLabel htmlFor="confirm-password-reset">
+                    <FormattedMessage id="confirm password" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.confirmPassword && errors.confirmPassword)}
@@ -191,7 +196,7 @@ const AuthResetPassword = () => {
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Reset Password
+                    <FormattedMessage id="reset-password" />
                   </Button>
                 </AnimateButton>
               </Grid>

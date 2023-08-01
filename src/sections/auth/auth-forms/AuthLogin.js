@@ -36,6 +36,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import useConfig from 'hooks/useConfig';
+import { FormattedMessage } from 'react-intl';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -80,9 +81,14 @@ const AuthLogin = () => {
           submit: null
         }}
         validationSchema={Yup.object().shape({
-          email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-          password: Yup.string().max(255).required('Password is required'),
-          phoneNumber: Yup.string().required('Phone number is required')
+          email: Yup.string()
+            .email(<FormattedMessage id="must be a valid email" />)
+            .max(255)
+            .required(<FormattedMessage id="email is required" />),
+          password: Yup.string()
+            .max(255)
+            .required(<FormattedMessage id="password is required" />),
+          phoneNumber: Yup.string().required(<FormattedMessage id="phone number is required" />)
         })}
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
@@ -113,14 +119,16 @@ const AuthLogin = () => {
               <TabContext value={tabValue}>
                 <Box sx={{ margin: 'auto' }}>
                   <TabList onChange={handleTabChange} aria-label="lab API tabs example">
-                    <Tab label="Email" value="1" />
-                    <Tab label="Mobile" value="2" />
+                    <Tab label={<FormattedMessage id="email" />} value="1" />
+                    <Tab label={<FormattedMessage id="mobile" />} value="2" />
                   </TabList>
                 </Box>
                 <TabPanel value="1" sx={{ width: '100%', paddingRight: '0px' }}>
                   <Grid item xs={12}>
                     <Stack spacing={1}>
-                      <InputLabel htmlFor="email-login">Email Address</InputLabel>
+                      <InputLabel htmlFor="email-login">
+                        <FormattedMessage id="email address" />
+                      </InputLabel>
                       <OutlinedInput
                         id="email-login"
                         type="email"
@@ -143,7 +151,9 @@ const AuthLogin = () => {
                 <TabPanel value="2" sx={{ width: '100%', paddingRight: '0px' }}>
                   <Grid item xs={12}>
                     <Stack spacing={1}>
-                      <InputLabel htmlFor="phone-number">Phone Number*</InputLabel>
+                      <InputLabel htmlFor="phone-number">
+                        <FormattedMessage id="phone number" />
+                      </InputLabel>
                       <PhoneInput
                         name="phoneNumber"
                         id="phone-number"
@@ -166,7 +176,9 @@ const AuthLogin = () => {
 
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="password-login">Password</InputLabel>
+                  <InputLabel htmlFor="password-login">
+                    <FormattedMessage id="password" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     color={capsWarning ? 'warning' : 'primary'}
@@ -198,7 +210,7 @@ const AuthLogin = () => {
                   />
                   {capsWarning && (
                     <Typography variant="caption" sx={{ color: 'warning.main' }} id="warning-helper-text-password-login">
-                      Caps lock on!
+                      <FormattedMessage id="caps lock on!" />
                     </Typography>
                   )}
                   {touched.password && errors.password && (
@@ -221,7 +233,11 @@ const AuthLogin = () => {
                         size="small"
                       />
                     }
-                    label={<Typography variant="h6">Keep me sign in</Typography>}
+                    label={
+                      <Typography variant="h6">
+                        <FormattedMessage id="keep me sign in" />{' '}
+                      </Typography>
+                    }
                   />
                   <Link
                     variant="h6"
@@ -229,7 +245,7 @@ const AuthLogin = () => {
                     to={isLoggedIn ? '/auth/forgot-password' : '/forgot-password'}
                     color="text.primary"
                   >
-                    Forgot Password?
+                    <FormattedMessage id="forgot password?" />
                   </Link>
                 </Stack>
               </Grid>
@@ -241,7 +257,7 @@ const AuthLogin = () => {
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Login
+                    <FormattedMessage id="login" />
                   </Button>
                 </AnimateButton>
               </Grid>

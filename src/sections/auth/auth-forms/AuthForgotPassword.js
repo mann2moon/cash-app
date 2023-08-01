@@ -13,6 +13,7 @@ import useAuth from 'hooks/useAuth';
 import useScriptRef from 'hooks/useScriptRef';
 import AnimateButton from 'components/@extended/AnimateButton';
 import { openSnackbar } from 'store/reducers/snackbar';
+import { FormattedMessage } from 'react-intl';
 
 // ============================|| FIREBASE - FORGOT PASSWORD ||============================ //
 
@@ -80,7 +81,9 @@ const AuthForgotPassword = () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="email-forgot">Email Address</InputLabel>
+                  <InputLabel htmlFor="email-forgot">
+                    <FormattedMessage id="email address" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.email && errors.email)}
@@ -106,12 +109,14 @@ const AuthForgotPassword = () => {
                 </Grid>
               )}
               <Grid item xs={12} sx={{ mb: -2 }}>
-                <Typography variant="caption">Do not forgot to check SPAM box.</Typography>
+                <Typography variant="caption">
+                  <FormattedMessage id="do not forgot to check SPAM box." />
+                </Typography>
               </Grid>
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Send Password Reset Email
+                    <FormattedMessage id="send-password-reset-email" />
                   </Button>
                 </AnimateButton>
               </Grid>

@@ -8,6 +8,7 @@ import MainCard from 'components/MainCard';
 
 // assets
 import { FileDoneOutlined, MailOutlined, TranslationOutlined } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 
 // ==============================|| TAB - SETTINGS ||============================== //
 
@@ -36,8 +37,12 @@ const TabSettings = () => {
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-oc"
-            primary={<Typography variant="h5">Order Confirmation</Typography>}
-            secondary="You will be notified when customer order any product"
+            primary={
+              <Typography variant="h5">
+                <FormattedMessage id="order-confirmation" />
+              </Typography>
+            }
+            secondary={<FormattedMessage id="you will be notified when customer order any product" />}
           />
           <Switch
             edge="end"
@@ -54,8 +59,12 @@ const TabSettings = () => {
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-sen"
-            primary={<Typography variant="h5">Setup Email Notification</Typography>}
-            secondary="Turn on email  notification to get updates through email"
+            primary={
+              <Typography variant="h5">
+                <FormattedMessage id="setup-email-notification" />{' '}
+              </Typography>
+            }
+            secondary={<FormattedMessage id="turn on email  notification to get updates through email" />}
           />
           <Switch
             edge="end"
@@ -72,8 +81,12 @@ const TabSettings = () => {
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-usn"
-            primary={<Typography variant="h5">Update System Notification</Typography>}
-            secondary="You will be notified when customer order any product"
+            primary={
+              <Typography variant="h5">
+                <FormattedMessage id="update System Notification" />{' '}
+              </Typography>
+            }
+            secondary={<FormattedMessage id="you will be notified when customer order any product" />}
           />
           <Switch
             edge="end"
@@ -90,8 +103,12 @@ const TabSettings = () => {
           </ListItemIcon>
           <ListItemText
             id="switch-list-label-lc"
-            primary={<Typography variant="h5">Language Change</Typography>}
-            secondary="You will be notified when customer order any product"
+            primary={
+              <Typography variant="h5">
+                <FormattedMessage id="language-change" />{' '}
+              </Typography>
+            }
+            secondary={<FormattedMessage id="you will be notified when customer order any product" />}
           />
           <Switch
             edge="end"
@@ -105,9 +122,11 @@ const TabSettings = () => {
       </List>
       <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2} sx={{ mt: 2.5 }}>
         <Button variant="outlined" color="secondary">
-          Cancel
+          <FormattedMessage id="cancel" />
         </Button>
-        <Button variant="contained">Save</Button>
+        <Button variant="contained">
+          <FormattedMessage id="save" />
+        </Button>
       </Stack>
     </MainCard>
   );
