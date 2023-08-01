@@ -25,6 +25,7 @@ import { Network } from 'data/network';
 import { WithdrawToken } from 'data/withdrawToken';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { ContentCopy } from '@mui/icons-material';
+import { FormattedMessage } from 'react-intl';
 
 const Withdraw = () => {
   const [withDrawCoin, setWithDrawCoin] = useState({
@@ -63,14 +64,18 @@ const Withdraw = () => {
 
   return (
     <>
-      <Typography variant="h3">Withdraw Crypto</Typography>
+      <Typography variant="h3">
+        <FormattedMessage id="withdraw-crypto" />
+      </Typography>
       <Grid container sx={{ mt: 5 }}>
         <Grid item lg={4} md={4} sm={12} xs={12}></Grid>
         <Grid item lg={4} md={4} sm={12} xs={12}>
           <Card sx={{ padding: '20px' }}>
             <Stack direction="column" sx={{ mt: 2 }}>
               <Stack direction="column">
-                <Typography sx={{ color: mode === 'dark' ? '#FFF' : '#8c8c8c' }}>Select Coin</Typography>
+                <Typography sx={{ color: mode === 'dark' ? '#FFF' : '#8c8c8c' }}>
+                  <FormattedMessage id="select-coin" />{' '}
+                </Typography>
                 <Button
                   onClick={handleOpen}
                   sx={{
@@ -98,7 +103,7 @@ const Withdraw = () => {
                   <DialogContent sx={{ width: { lg: '600px', md: '400px', sm: '300px', xs: '250px' }, overflowY: 'visible' }}>
                     <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
                       <Typography sx={{ color: mode === 'dark' ? '#FFF' : 'black', ml: 2, marginY: 'auto' }} variant="h3">
-                        Select Coin
+                        <FormattedMessage id="select-coin" />
                       </Typography>
                       <IconButton onClick={handleClose} aria-label="close">
                         <ClearIcon sx={{ marginY: 'auto' }} />
@@ -109,7 +114,7 @@ const Withdraw = () => {
 
                     <Stack direction="column" sx={{ mt: 5 }}>
                       <Typography variant="h6" color="secondary" sx={{ ml: 2 }}>
-                        Available for Withdrawal
+                        <FormattedMessage id="available-for-withdrawal" />
                       </Typography>
                       <FormControl sx={{ mt: 2, width: '100%' }}>
                         {token?.map((item, index) => (
@@ -146,7 +151,7 @@ const Withdraw = () => {
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Stack direction="column">
                   <Typography variant="h6" color="secondary">
-                    Wallet Address
+                    <FormattedMessage id="wallet-address" />
                   </Typography>
                   <OutlinedInput
                     placeholder="wallet address"
@@ -164,7 +169,7 @@ const Withdraw = () => {
               </Stack>
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Typography variant="h6" color="secondary">
-                  Network
+                  <FormattedMessage id="network" />
                 </Typography>
                 <Select
                   displayEmpty
@@ -189,14 +194,16 @@ const Withdraw = () => {
               <Stack direction="column" sx={{ mt: 2 }}>
                 <Stack direction="column">
                   <Typography variant="h6" color="secondary">
-                    Amount
+                    <FormattedMessage id="amount" />
                   </Typography>
                   <TextField placeholder="amount" id="amount" />
                 </Stack>
               </Stack>
               <Stack direction="row" justifyContent="space-between" sx={{ width: '100%', mt: 2 }}>
                 <Stack direction="column">
-                  <Typography variant="h6">Amount Received</Typography>
+                  <Typography variant="h6">
+                    <FormattedMessage id="amount-received" />
+                  </Typography>
                   <Typography variant="h4">1.55 LTC</Typography>
                   <Typography color="secondary" variant="body2">
                     Fee: $ 0.8889189
@@ -204,7 +211,7 @@ const Withdraw = () => {
                 </Stack>
                 <AnimateButton>
                   <Button color="success" variant="contained" sx={{ mt: 2 }} onClick={() => confirm('Are you sure?')}>
-                    WithDraw
+                    <FormattedMessage id="withdraw" />
                   </Button>
                 </AnimateButton>
               </Stack>

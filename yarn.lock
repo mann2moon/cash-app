@@ -1885,6 +1885,14 @@
     "@formatjs/intl-localematcher" "0.2.25"
     "tslib" "^2.1.0"
 
+"@formatjs/ecma402-abstract@1.17.0":
+  "integrity" "sha512-6ueQTeJZtwKjmh23bdkq/DMqH4l4bmfvtQH98blOSbiXv/OUiyijSW6jU22IT8BNM1ujCaEvJfTtyCYVH38EMQ=="
+  "resolved" "https://registry.npmjs.org/@formatjs/ecma402-abstract/-/ecma402-abstract-1.17.0.tgz"
+  "version" "1.17.0"
+  dependencies:
+    "@formatjs/intl-localematcher" "0.4.0"
+    "tslib" "^2.4.0"
+
 "@formatjs/fast-memoize@1.2.1":
   "integrity" "sha512-Rg0e76nomkz3vF9IPlKeV+Qynok0r7YZjL6syLz4/urSg0IbjPZCB/iYUMNsYA643gh4mgrX3T7KEIFIxJBQeg=="
   "resolved" "https://registry.npmjs.org/@formatjs/fast-memoize/-/fast-memoize-1.2.1.tgz"
@@ -1933,6 +1941,22 @@
   "version" "0.2.25"
   dependencies:
     "tslib" "^2.1.0"
+
+"@formatjs/intl-localematcher@0.4.0":
+  "integrity" "sha512-bRTd+rKomvfdS4QDlVJ6TA/Jx1F2h/TBVO5LjvhQ7QPPHp19oPNMIum7W2CMEReq/zPxpmCeB31F9+5gl/qtvw=="
+  "resolved" "https://registry.npmjs.org/@formatjs/intl-localematcher/-/intl-localematcher-0.4.0.tgz"
+  "version" "0.4.0"
+  dependencies:
+    "tslib" "^2.4.0"
+
+"@formatjs/intl-relativetimeformat@^11.2.4":
+  "integrity" "sha512-AJtPvpF7ub/nlu+PmysW9qho7Bev/v0qBNamY4Olh81P73ayf6JgFhxSxuLI2IxuHbXwqPb0iNBhvEXGBklCbQ=="
+  "resolved" "https://registry.npmjs.org/@formatjs/intl-relativetimeformat/-/intl-relativetimeformat-11.2.4.tgz"
+  "version" "11.2.4"
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.17.0"
+    "@formatjs/intl-localematcher" "0.4.0"
+    "tslib" "^2.4.0"
 
 "@formatjs/intl@2.2.1":
   "integrity" "sha512-vgvyUOOrzqVaOFYzTf2d3+ToSkH2JpR7x/4U1RyoHQLmvEaTQvXJ7A2qm1Iy3brGNXC/+/7bUlc3lpH+h/LOJA=="

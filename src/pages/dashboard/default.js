@@ -17,6 +17,7 @@ import { faLitecoinSign } from '@fortawesome/free-solid-svg-icons';
 import AnimateButton from 'components/@extended/AnimateButton';
 import { BankOutlined } from '@ant-design/icons';
 import { useTheme } from '@emotion/react';
+import { FormattedMessage } from 'react-intl';
 // assets
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
@@ -53,7 +54,10 @@ const DashboardDefault = () => {
         <Grid item xs={12} md={12} lg={12}>
           <Grid container alignItems="center" justifyContent="space-between">
             <Grid item>
-              <Typography variant="h5">Analytics Report</Typography>
+              <Typography variant="h5">
+                {' '}
+                <FormattedMessage id="analytics-report" />
+              </Typography>
             </Grid>
           </Grid>
           <MainCard sx={{ mt: 2 }}>
@@ -113,7 +117,7 @@ const DashboardDefault = () => {
       </Grid>
       <Grid item xs={12} md={6} lg={6}>
         <Grid item xs={12} md={12} lg={12} sx={{ mb: 3 }}>
-          <MainCard title="Exchange">
+          <MainCard title={<FormattedMessage id="exchange" />}>
             <CardContent>
               <Stack
                 direction={{
@@ -127,7 +131,9 @@ const DashboardDefault = () => {
                 spacing={2}
               >
                 <Stack direction="column" spacing={1} sx={{ width: '100%' }}>
-                  <Typography variant="h5">Currency</Typography>
+                  <Typography variant="h5">
+                    <FormattedMessage id="currency" />
+                  </Typography>
                   <Stack direction="row">
                     <Typography
                       variant="h4"
@@ -157,7 +163,9 @@ const DashboardDefault = () => {
                   </Stack>
                 </Stack>
                 <Stack direction="column" spacing={1} sx={{ width: '100%' }}>
-                  <Typography variant="h5">Payment Method</Typography>
+                  <Typography variant="h5">
+                    <FormattedMessage id="payment-method" />
+                  </Typography>
                   <Stack direction="row">
                     <Typography
                       variant="h4"
@@ -186,7 +194,9 @@ const DashboardDefault = () => {
                   </Stack>
                 </Stack>
                 <Stack direction="column" spacing={1} sx={{ width: '100%' }}>
-                  <Typography variant="h5">Enter your amount</Typography>
+                  <Typography variant="h5">
+                    <FormattedMessage id="enter-your-amount" />{' '}
+                  </Typography>
                   <Stack direction="row" sx={{ width: '100%' }}>
                     <TextField placeholder="0.0214LTC" id="ltc-change" sx={{ width: '100%' }} />
                     <TextField placeholder="125.00 USD" id="usd-change" sx={{ width: '100%' }} />
@@ -199,7 +209,7 @@ const DashboardDefault = () => {
                 </Typography>
                 <AnimateButton>
                   <Fab variant="extended" color="primary" sx={{ width: '100%', mt: 2 }}>
-                    Exchange Now
+                    <FormattedMessage id="exchange-now" /> Exchange Now
                   </Fab>
                 </AnimateButton>
               </Stack>
@@ -299,7 +309,7 @@ const DashboardDefault = () => {
             </Stack>
           </Stack>
         </MainCard>
-        <MainCard title="Wallet" content={false} sx={{ '& .MuiCardHeader-root': { p: 1.75 }, mt: 5 }}>
+        <MainCard title={<FormattedMessage id="wallet" />} content={false} sx={{ '& .MuiCardHeader-root': { p: 1.75 }, mt: 5 }}>
           <CardContent>
             <Typography variant="h6" sx={{ color: '#6f77d0' }}>
               Available LTC
@@ -321,12 +331,12 @@ const DashboardDefault = () => {
             </Stack>
             <AnimateButton>
               <Button variant="contained" color="warning" sx={{ width: '100%', mt: 2 }}>
-                Sell
+                <FormattedMessage id="sell" />
               </Button>
             </AnimateButton>
             <AnimateButton>
               <Button variant="contained" color="success" sx={{ width: '100%', mt: 2 }}>
-                Buy
+                <FormattedMessage id="buy" />
               </Button>
             </AnimateButton>
           </CardContent>
@@ -336,7 +346,9 @@ const DashboardDefault = () => {
       <Grid item xs={12} md={12} lg={12}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Typography variant="h5">Transaction</Typography>
+            <Typography variant="h5">
+              <FormattedMessage id="transaction" />{' '}
+            </Typography>
           </Grid>
           <Grid item />
         </Grid>

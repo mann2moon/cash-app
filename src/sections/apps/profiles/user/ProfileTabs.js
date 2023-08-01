@@ -15,6 +15,7 @@ import { facebookColor, linkedInColor, twitterColor } from 'config';
 
 // assets
 import { FacebookFilled, LinkedinFilled, MoreOutlined, TwitterSquareFilled, CameraOutlined } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 
 const avatarImage = require.context('assets/images/users', true);
 
@@ -85,10 +86,10 @@ const ProfileTabs = ({ focusInput }) => {
                   });
                 }}
               >
-                Edit
+                <FormattedMessage id="edit" />
               </MenuItem>
               <MenuItem onClick={handleClose} disabled>
-                Delete
+                <FormattedMessage id="delete" />
               </MenuItem>
             </Menu>
           </Stack>
@@ -120,7 +121,9 @@ const ProfileTabs = ({ focusInput }) => {
               >
                 <Stack spacing={0.5} alignItems="center">
                   <CameraOutlined style={{ color: theme.palette.secondary.lighter, fontSize: '2rem' }} />
-                  <Typography sx={{ color: 'secondary.lighter' }}>Upload</Typography>
+                  <Typography sx={{ color: 'secondary.lighter' }}>
+                    <FormattedMessage id="upload" />
+                  </Typography>
                 </Stack>
               </Box>
             </FormLabel>

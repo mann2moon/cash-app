@@ -9,6 +9,7 @@ import AuthWrapper from 'sections/auth/AuthWrapper';
 import AuthCodeVerification from 'sections/auth/auth-forms/AuthCodeVerification';
 
 import { LeftOutlined } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 
 // ================================|| CODE VERIFICATION ||================================ //
 
@@ -24,17 +25,24 @@ const CodeVerification = () => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Link component="button" onClick={handleGoBack}>
-            <LeftOutlined /> Back
+            <LeftOutlined /> <FormattedMessage id="back" />
           </Link>
         </Grid>
         <Grid item xs={12}>
           <Stack spacing={1}>
-            <Typography variant="h3">Enter Verification Code</Typography>
-            <Typography color="secondary">We send you on mail.</Typography>
+            <Typography variant="h3">
+              <FormattedMessage id="enter-verification-code" />
+            </Typography>
+            <Typography color="secondary">
+              <FormattedMessage id="we-send-you-on-mail" />{' '}
+            </Typography>
           </Stack>
         </Grid>
         <Grid item xs={12}>
-          <Typography>We`ve send you code on jone. ****@company.com</Typography>
+          <Typography>
+            <FormattedMessage id="we`ve send you code on jone. " />
+            ****@company.com
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <AuthCodeVerification />

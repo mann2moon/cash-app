@@ -7,6 +7,7 @@ import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 
 // assets
 import { CreditCardOutlined, LockOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { FormattedMessage } from 'react-intl';
 
 function getPathIndex(pathname) {
   let selectedTab = 0;
@@ -50,25 +51,25 @@ const ProfileTab = () => {
         <ListItemIcon>
           <UserOutlined />
         </ListItemIcon>
-        <ListItemText primary="Personal Information" />
+        <ListItemText primary={<FormattedMessage id="personal-information" />} />
       </ListItemButton>
       <ListItemButton selected={selectedIndex === 1} onClick={() => handleListItemClick(1, '/profile/user/payment')}>
         <ListItemIcon>
           <CreditCardOutlined />
         </ListItemIcon>
-        <ListItemText primary="Payment" />
+        <ListItemText primary={<FormattedMessage id="payment" />} />
       </ListItemButton>
       <ListItemButton selected={selectedIndex === 2} onClick={() => handleListItemClick(2, '/profile/user/password')}>
         <ListItemIcon>
           <LockOutlined />
         </ListItemIcon>
-        <ListItemText primary="Change Password" />
+        <ListItemText primary={<FormattedMessage id="change-password" />} />
       </ListItemButton>
       <ListItemButton selected={selectedIndex === 3} onClick={() => handleListItemClick(3, '/profile/user/settings')}>
         <ListItemIcon>
           <SettingOutlined />
         </ListItemIcon>
-        <ListItemText primary="Settings" />
+        <ListItemText primary={<FormattedMessage id="settings" />} />
       </ListItemButton>
     </List>
   );

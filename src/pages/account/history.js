@@ -7,6 +7,7 @@ import { DepositHistoryTable } from 'components/history/depositTable';
 import { WithdrawTable } from 'components/history/withdrawTable';
 import withdrawHistoryData from 'data/withdrawHistory';
 import depositHistoryData from 'data/depositHistory';
+import { FormattedMessage } from 'react-intl';
 
 const History = () => {
   const [value, setValue] = useState('1');
@@ -21,8 +22,8 @@ const History = () => {
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Tab label="Deposit History" value="1" />
-                <Tab label="Withdraw History" value="2" />
+                <Tab label={<FormattedMessage id="deposit-history" />} value="1" />
+                <Tab label={<FormattedMessage id="withdraw-history" />} value="2" />
               </TabList>
             </Box>
             <TabPanel value="1">

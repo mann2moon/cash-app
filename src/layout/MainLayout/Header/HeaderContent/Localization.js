@@ -34,6 +34,7 @@ const Localization = () => {
   };
 
   const handleListItemClick = (lang) => {
+    console.log(lang);
     onChangeLocalization(lang);
     setOpen(false);
   };
@@ -103,37 +104,14 @@ const Localization = () => {
                       }
                     />
                   </ListItemButton>
-                  <ListItemButton selected={i18n === 'fr'} onClick={() => handleListItemClick('fr')}>
+
+                  <ListItemButton selected={i18n === 'es'} onClick={() => handleListItemClick('es')}>
                     <ListItemText
                       primary={
                         <Grid container>
-                          <Typography color="textPrimary">français</Typography>
+                          <Typography color="textPrimary">España</Typography>
                           <Typography variant="caption" color="textSecondary" sx={{ ml: '8px' }}>
-                            (French)
-                          </Typography>
-                        </Grid>
-                      }
-                    />
-                  </ListItemButton>
-                  <ListItemButton selected={i18n === 'ro'} onClick={() => handleListItemClick('ro')}>
-                    <ListItemText
-                      primary={
-                        <Grid container>
-                          <Typography color="textPrimary">Română</Typography>
-                          <Typography variant="caption" color="textSecondary" sx={{ ml: '8px' }}>
-                            (Romanian)
-                          </Typography>
-                        </Grid>
-                      }
-                    />
-                  </ListItemButton>
-                  <ListItemButton selected={i18n === 'zh'} onClick={() => handleListItemClick('zh')}>
-                    <ListItemText
-                      primary={
-                        <Grid container>
-                          <Typography color="textPrimary">中国人</Typography>
-                          <Typography variant="caption" color="textSecondary" sx={{ ml: '8px' }}>
-                            (Chinese)
+                            (ES)
                           </Typography>
                         </Grid>
                       }

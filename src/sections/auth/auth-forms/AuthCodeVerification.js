@@ -6,6 +6,7 @@ import { Button, Grid, Stack, Typography } from '@mui/material';
 import OtpInput from 'react-otp-input-rc-17';
 
 import AnimateButton from 'components/@extended/AnimateButton';
+import { FormattedMessage } from 'react-intl';
 // import useAuth from 'hooks/useAuth';
 
 // ============================|| STATIC - CODE VERIFICATION ||============================ //
@@ -56,15 +57,17 @@ const AuthCodeVerification = () => {
       <Grid item xs={12}>
         <AnimateButton>
           <Button disableElevation fullWidth size="large" type="submit" variant="contained" onClick={handleSubmit}>
-            Continue
+            <FormattedMessage id="continue" />
           </Button>
         </AnimateButton>
       </Grid>
       <Grid item xs={12}>
         <Stack direction="row" justifyContent="space-between" alignItems="baseline">
-          <Typography>Did not receive the email? Check your spam filter, or</Typography>
+          <Typography>
+            <FormattedMessage id="did not receive the email? check your spam filter, or" />{' '}
+          </Typography>
           <Typography variant="body1" sx={{ minWidth: 85, ml: 2, textDecoration: 'none', cursor: 'pointer' }} color="primary">
-            Resend code
+            <FormattedMessage id="resend-code" />
           </Typography>
         </Stack>
       </Grid>

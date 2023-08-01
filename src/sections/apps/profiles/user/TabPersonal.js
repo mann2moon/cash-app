@@ -20,6 +20,7 @@ import MainCard from 'components/MainCard';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import useConfig from 'hooks/useConfig';
+import { FormattedMessage } from 'react-intl';
 
 // styles & constant
 const ITEM_HEIGHT = 48;
@@ -57,7 +58,11 @@ const TabPersonal = () => {
   const inputRef = useInputRef();
 
   return (
-    <MainCard content={false} title="Personal Information" sx={{ '& .MuiInputLabel-root': { fontSize: '0.875rem' } }}>
+    <MainCard
+      content={false}
+      title={<FormattedMessage id="personal-information" />}
+      sx={{ '& .MuiInputLabel-root': { fontSize: '0.875rem' } }}
+    >
       <Formik
         initialValues={{
           firstname: 'Tom',
@@ -113,7 +118,9 @@ const TabPersonal = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-first-name">First Name</InputLabel>
+                    <InputLabel htmlFor="personal-first-name">
+                      <FormattedMessage id="first name" />
+                    </InputLabel>
                     <TextField
                       fullWidth
                       id="personal-first-name"
@@ -134,7 +141,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-last-name">Last Name</InputLabel>
+                    <InputLabel htmlFor="personal-last-name">
+                      <FormattedMessage id="last name" />
+                    </InputLabel>
                     <TextField
                       fullWidth
                       id="personal-last-name"
@@ -153,7 +162,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-email">Email Address</InputLabel>
+                    <InputLabel htmlFor="personal-email">
+                      <FormattedMessage id="email address" />
+                    </InputLabel>
                     <TextField
                       type="email"
                       fullWidth
@@ -173,7 +184,10 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-date">Date of Birth (+18)</InputLabel>
+                    <InputLabel htmlFor="personal-date">
+                      <FormattedMessage id="date of birth" />
+                      (+18)
+                    </InputLabel>
                     <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
                       <Select
                         fullWidth
@@ -181,18 +195,42 @@ const TabPersonal = () => {
                         name="dob-month"
                         onChange={(e) => handleChangeMonth(e, values.dob, setFieldValue)}
                       >
-                        <MenuItem value="0">January</MenuItem>
-                        <MenuItem value="1">February</MenuItem>
-                        <MenuItem value="2">March</MenuItem>
-                        <MenuItem value="3">April</MenuItem>
-                        <MenuItem value="4">May</MenuItem>
-                        <MenuItem value="5">June</MenuItem>
-                        <MenuItem value="6">July</MenuItem>
-                        <MenuItem value="7">August</MenuItem>
-                        <MenuItem value="8">September</MenuItem>
-                        <MenuItem value="9">October</MenuItem>
-                        <MenuItem value="10">November</MenuItem>
-                        <MenuItem value="11">December</MenuItem>
+                        <MenuItem value="0">
+                          <FormattedMessage id="january" />
+                        </MenuItem>
+                        <MenuItem value="1">
+                          <FormattedMessage id="february" />
+                        </MenuItem>
+                        <MenuItem value="2">
+                          <FormattedMessage id="march" />{' '}
+                        </MenuItem>
+                        <MenuItem value="3">
+                          <FormattedMessage id="april" />
+                        </MenuItem>
+                        <MenuItem value="4">
+                          <FormattedMessage id="may" />{' '}
+                        </MenuItem>
+                        <MenuItem value="5">
+                          <FormattedMessage id="june" />{' '}
+                        </MenuItem>
+                        <MenuItem value="6">
+                          <FormattedMessage id="july" />{' '}
+                        </MenuItem>
+                        <MenuItem value="7">
+                          <FormattedMessage id="august" />{' '}
+                        </MenuItem>
+                        <MenuItem value="8">
+                          <FormattedMessage id="september" />
+                        </MenuItem>
+                        <MenuItem value="9">
+                          <FormattedMessage id="october" />
+                        </MenuItem>
+                        <MenuItem value="10">
+                          <FormattedMessage id="november" />
+                        </MenuItem>
+                        <MenuItem value="11">
+                          <FormattedMessage id="december" />
+                        </MenuItem>
                       </Select>
                       <Select
                         fullWidth
@@ -239,7 +277,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-phone">Phone Number</InputLabel>
+                    <InputLabel htmlFor="personal-phone">
+                      <FormattedMessage id="phone number" />
+                    </InputLabel>
                     <PhoneInput
                       name="phoneNumber"
                       id="phone-number"
@@ -259,7 +299,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-postalCode">Postal Code</InputLabel>
+                    <InputLabel htmlFor="personal-postalCode">
+                      <FormattedMessage id="postal-code" />
+                    </InputLabel>
                     <TextField
                       fullWidth
                       id="personal-postalCode"
@@ -282,7 +324,9 @@ const TabPersonal = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-addrees1">Address</InputLabel>
+                    <InputLabel htmlFor="personal-addrees1">
+                      <FormattedMessage id="address" />
+                    </InputLabel>
                     <TextField
                       fullWidth
                       id="personal-addrees1"
@@ -301,7 +345,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-addrees1">City</InputLabel>
+                    <InputLabel htmlFor="personal-addrees1">
+                      <FormattedMessage id="city" />
+                    </InputLabel>
                     <TextField
                       fullWidth
                       id="personal-city"
@@ -320,7 +366,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-country">Country</InputLabel>
+                    <InputLabel htmlFor="personal-country">
+                      <FormattedMessage id="country" />{' '}
+                    </InputLabel>
                     <Autocomplete
                       id="personal-country"
                       fullWidth
@@ -369,7 +417,9 @@ const TabPersonal = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Stack spacing={1.25}>
-                    <InputLabel htmlFor="personal-state">State</InputLabel>
+                    <InputLabel htmlFor="personal-state">
+                      <FormattedMessage id="state" />
+                    </InputLabel>
                     <TextField
                       fullWidth
                       id="personal-state"
@@ -391,10 +441,10 @@ const TabPersonal = () => {
             <Box sx={{ p: 2.5 }}>
               <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={2} sx={{ mt: 2.5 }}>
                 <Button variant="outlined" color="secondary">
-                  Cancel
+                  <FormattedMessage id="cancel" />
                 </Button>
                 <Button disabled={isSubmitting || Object.keys(errors).length !== 0} type="submit" variant="contained">
-                  Save
+                  <FormattedMessage id="save" />
                 </Button>
               </Stack>
             </Box>

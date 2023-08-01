@@ -36,6 +36,7 @@ import { strengthColor, strengthIndicator } from 'utils/password-strength';
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import useConfig from 'hooks/useConfig';
+import { FormattedMessage } from 'react-intl';
 
 // ============================|| FIREBASE - REGISTER ||============================ //
 
@@ -119,14 +120,16 @@ const AuthRegister = () => {
               <TabContext value={tabValue}>
                 <Box sx={{ margin: 'auto' }}>
                   <TabList onChange={handleTabChange} aria-label="lab API tabs example">
-                    <Tab label="Email" value="1" />
-                    <Tab label="Mobile" value="2" />
+                    <Tab label={<FormattedMessage id="email" />} value="1" />
+                    <Tab label={<FormattedMessage id="mobile" />} value="2" />
                   </TabList>
                 </Box>
                 <TabPanel value="1" sx={{ width: '100%', paddingRight: '0px' }}>
                   <Grid item xs={12}>
                     <Stack spacing={1}>
-                      <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
+                      <InputLabel htmlFor="email-signup">
+                        <FormattedMessage id="email address" />
+                      </InputLabel>
                       <OutlinedInput
                         fullWidth
                         error={Boolean(touched.email && errors.email)}
@@ -150,7 +153,9 @@ const AuthRegister = () => {
                 <TabPanel value="2" sx={{ width: '100%', paddingRight: '0px' }}>
                   <Grid item xs={12}>
                     <Stack spacing={1}>
-                      <InputLabel htmlFor="phone-number">Phone Number*</InputLabel>
+                      <InputLabel htmlFor="phone-number">
+                        <FormattedMessage id="phone number" />
+                      </InputLabel>
                       <PhoneInput
                         name="phoneNumber"
                         id="phone-number"
@@ -172,7 +177,9 @@ const AuthRegister = () => {
               </TabContext>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
+                  <InputLabel htmlFor="firstname-signup">
+                    <FormattedMessage id="first name" />
+                  </InputLabel>
                   <OutlinedInput
                     id="firstname-login"
                     type="firstname"
@@ -193,7 +200,9 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12} md={6}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
+                  <InputLabel htmlFor="lastname-signup">
+                    <FormattedMessage id="last name" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.lastname && errors.lastname)}
@@ -215,7 +224,9 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">Company</InputLabel>
+                  <InputLabel htmlFor="company-signup">
+                    <FormattedMessage id="company" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.company && errors.company)}
@@ -237,7 +248,9 @@ const AuthRegister = () => {
 
               <Grid item xs={12}>
                 <Stack spacing={1}>
-                  <InputLabel htmlFor="password-signup">Password</InputLabel>
+                  <InputLabel htmlFor="password-signup">
+                    <FormattedMessage id="password" />
+                  </InputLabel>
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
@@ -279,7 +292,7 @@ const AuthRegister = () => {
                     </Grid>
                     <Grid item>
                       <Typography variant="subtitle1" fontSize="0.75rem">
-                        {level?.label}
+                        <FormattedMessage id={`${level?.label}`} />
                       </Typography>
                     </Grid>
                   </Grid>
@@ -287,13 +300,14 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body2">
-                  By Signing up, you agree to our &nbsp;
+                  <FormattedMessage id="by signing up, you agree to our" />
+                  &nbsp;
                   <Link variant="subtitle2" component={RouterLink} to="#">
-                    Terms of Service
+                    <FormattedMessage id="terms of service" />
                   </Link>
-                  &nbsp; and &nbsp;
+                  &nbsp; <FormattedMessage id="and" /> &nbsp;
                   <Link variant="subtitle2" component={RouterLink} to="#">
-                    Privacy Policy
+                    <FormattedMessage id="privacy policy" />
                   </Link>
                 </Typography>
               </Grid>
@@ -305,7 +319,7 @@ const AuthRegister = () => {
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Create Account
+                    <FormattedMessage id="create account" />
                   </Button>
                 </AnimateButton>
               </Grid>
